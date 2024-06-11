@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pattern Recognition Test</title>
+  </head>
+  <body>
+    <div id="canvas-container"></div>
+    <div id="input">
+      <textarea id="txt-message" style="width: 300px; height: 100px">
+^-^ --- r 90; s 10</textarea
+      >
+      <button type="button" onclick="btnDisplayClicked()">Display</button>
+      <button type="button" onclick="saveToGif()">Save GIF</button>
+    </div>
+    <script>
+      let messageToDisplay = "";
+      let drawingMessages = [];
+    </script>
+    <script src="drawing-message.js"></script>
+    <script src="rotation-code.js"></script>
+    <script src="scale-code.js"></script>
+    <script src="transition-code.js"></script>
+    <script src="sketch.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.3/p5.js"
+      integrity="sha512-hh+SgsBq/fi/sP+im6v2IxfQnEnqmT+K6HTb6GjXdyWo5MIRmVsGdXkM+L5xspw1+bXvdva/vvPs0wezzsY7Zg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script>
+      function btnDisplayClicked() {
+        drawingMessages = [];
+        messageToDisplay = document.getElementById("txt-message").value;
+        if (messageToDisplay) {
+          const arMsg = messageToDisplay.split("\n");
+          arMsg.forEach((msg, index) => {
+            const drawingMessage = new DrawingMessage(msg);
+            drawingMessages.push(drawingMessage);
+          });
+        }
+      }
+
+      function saveToGif() {
+        btnDisplayClicked();
+        saveGif("mytext", 2);
+      }
+    </script>
+  </body>
+</html>
