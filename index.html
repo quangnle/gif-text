@@ -12,6 +12,9 @@
 ^-^ --- r 90; s 10</textarea
       >
       <button type="button" onclick="btnDisplayClicked()">Display</button>
+    </div>
+    <div>
+      <input type="number" id="number-seconds" value="2" />
       <button type="button" onclick="saveToGif()">Save GIF</button>
     </div>
     <script>
@@ -44,7 +47,9 @@
 
       function saveToGif() {
         btnDisplayClicked();
-        saveGif("mytext", 2);
+        const numberSeconds =
+          document.getElementById("number-seconds").value * 1;
+        saveGif("mytext", numberSeconds);
       }
     </script>
   </body>
